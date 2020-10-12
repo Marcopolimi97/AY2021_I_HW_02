@@ -9,17 +9,101 @@
  *
  * ========================================
 */
+#include "InterruptRoutines.h"
+#include "RGBLedDriver.h"
+#include "colors.h"
 #include "project.h"
+
+
+int state=1;
+int newstate=1;
 
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
-
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-
+    
+    isr_Button_StartEx(ChangeState);
+    //RGBLed_Start();
+    
     for(;;)
-    {
-        /* Place your application code here. */
+    { 
+        if(newstate==1)
+        {
+            state=1;
+            RGBLed_Start();
+            RGBLed_WriteColor(YELLOW_COLOR);
+        }
+        
+        if(newstate==2)
+        {
+            state=2;
+            RGBLed_Start();
+            RGBLed_WriteColor(YELLOW_COLOR);
+            CyDelay(1000);
+            RGBLed_WriteColor(RED_COLOR);
+            CyDelay(1000);
+            //RGBLed_Stop();
+        }
+        
+        if(newstate==3)
+        {
+            state=3;
+            RGBLed_Start();
+            RGBLed_WriteColor(GREEN_COLOR);
+            CyDelay(1000);
+            RGBLed_WriteColor(YELLOW_COLOR);
+            CyDelay(1000);
+            //RGBLed_Stop();
+        
+        }
+        
+        if(newstate==4)
+        {
+            state=4;
+            RGBLed_Start();
+            RGBLed_WriteColor(RED_COLOR);
+            CyDelay(500);
+            RGBLed_WriteColor(GREEN_COLOR);
+            CyDelay(500);
+            //RGBLed_Stop();
+        }
+        
+        if(newstate==5)
+        {
+            state=5;
+            RGBLed_Start();
+            RGBLed_WriteColor(GREEN_COLOR);
+            CyDelay(250);
+            RGBLed_WriteColor(RED_COLOR);
+            CyDelay(250);
+            //RGBLed_Stop();
+        }
+        
+        if(newstate==6)
+        {
+            state=6;
+            RGBLed_Start();
+            RGBLed_WriteColor(YELLOW_COLOR);
+            CyDelay(1000);
+            RGBLed_WriteColor(RED_COLOR);
+            CyDelay(500);
+            RGBLed_WriteColor(NO_COLOR);
+            CyDelay(500);
+        }
+        
+        if(newstate==7)
+        {
+            state=7;
+            RGBLed_Start();
+            RGBLed_WriteColor(GREEN_COLOR);
+            CyDelay(500);
+            RGBLed_WriteColor(NO_COLOR);
+            CyDelay(500);
+            RGBLed_WriteColor(YELLOW_COLOR);
+            CyDelay(500);
+            RGBLed_WriteColor(RED_COLOR);
+            CyDelay(500);
+        }
     }
 }
 
