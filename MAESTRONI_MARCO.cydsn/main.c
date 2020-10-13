@@ -23,7 +23,6 @@ int main(void)
     CyGlobalIntEnable; /* Enable global interrupts. */
     
     isr_Button_StartEx(ChangeState);
-    //RGBLed_Start();
     
     for(;;)
     { 
@@ -42,7 +41,6 @@ int main(void)
             CyDelay(1000);
             RGBLed_WriteColor(RED_COLOR);
             CyDelay(1000);
-            //RGBLed_Stop();
         }
         
         if(newstate==3)
@@ -53,8 +51,6 @@ int main(void)
             CyDelay(1000);
             RGBLed_WriteColor(YELLOW_COLOR);
             CyDelay(1000);
-            //RGBLed_Stop();
-        
         }
         
         if(newstate==4)
@@ -65,7 +61,6 @@ int main(void)
             CyDelay(500);
             RGBLed_WriteColor(GREEN_COLOR);
             CyDelay(500);
-            //RGBLed_Stop();
         }
         
         if(newstate==5)
@@ -76,7 +71,6 @@ int main(void)
             CyDelay(250);
             RGBLed_WriteColor(RED_COLOR);
             CyDelay(250);
-            //RGBLed_Stop();
         }
         
         if(newstate==6)

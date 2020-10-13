@@ -12,6 +12,15 @@
 
 #include "InterruptRoutines.h"
 
+/* Ogni qualvolta entro nella interrrupt devo incrementare il numero del nuovo state.
+ * Ho scelto la seguente configurazione dell'interrupt con numerosi if, poichè il semplice
+ * incremento fatto tramite la seguente linea di codice:
+ *       state=state +1;
+ * mi dava dei problemi.
+ *
+ * L'uso di un'altra variabile globale newstate è stata quindi necessaria per evitare di non
+ * dover entrare ciclicamente negli if successivi.
+*/
 CY_ISR(ChangeState)
 {
     if(state==1)
@@ -38,6 +47,7 @@ CY_ISR(ChangeState)
     {
         newstate=7;
     }
+    // se sono allo state 7, torno allo state 1
     if(state==7)
     {
         newstate=1;
